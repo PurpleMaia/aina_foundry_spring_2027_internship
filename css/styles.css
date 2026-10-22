@@ -525,7 +525,7 @@ h1 { -webkit-text-stroke: 6px var(--brand-deep); paint-order: stroke fill; strok
   .cta { padding: 0.16in 0.65in; }
   .qr svg { width: 1.1in; height: 1.1in; }
   html.print-safe .hero { flex-basis: 2.7in; min-height: 2.7in; }
-  html.print-safe section + section { margin-top: 0.19in; }
+  html.print-safe section + section { margin-top: 0.16in; }
   html.print-safe main { padding-top: 0.12in; }
   html.print-safe main { padding-bottom: 0.1in; }
 }
@@ -537,8 +537,8 @@ h2::before { background: #DC6C53; }
 /* ---------- What you get + $20 tile + 3-up specs ---------- */
 .gets { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(12px, 2.4vw, 22px); }
 .gets li { font-family: var(--display); font-weight: 600; font-size: clamp(15px, 2.2vw, 17px); line-height: 1.25; color: var(--ink); border-left: 3px solid #DC6C53; padding: 2px 0 2px 10px; }
-.specs { grid-template-columns: repeat(3, auto); }
-@media (max-width: 560px) { .gets { grid-template-columns: 1fr; } .specs { grid-template-columns: auto auto; } }
+.specs { flex: 1 1 100%; display: flex; flex-wrap: wrap; justify-content: space-between; }
+@media (max-width: 560px) { .gets { grid-template-columns: 1fr; } .specs { justify-content: flex-start; gap: 12px 28px; } }
 @media print {
   .gets li { font-size: 12.5pt; padding-left: 0.1in; }
   .gets { gap: 0.2in; }
@@ -585,3 +585,11 @@ h2::before { background: #DC6C53; }
   transform: skewX(-7deg); transform-origin: left bottom; -webkit-text-stroke: 7px var(--brand-deep); paint-order: stroke fill; stroke-linejoin: round; text-shadow: 3px 3px 0 var(--brand-deep); }
 .hero h1 em { font-style: normal; color: #F7BB32; }
 @media print { .hero h1 { font-size: 66pt; } }
+
+/* ---------- Readability on the bars: lighter green, quieter pattern, stronger halo on text ---------- */
+:root { --bar: #2A7048; }
+.lede, .cta { background-color: var(--bar); }
+.lede::before, .cta::before { opacity: 0.38; }
+.lede-text, .lede-cta, .cta-big, .cta .fine, .cta .qr .label { -webkit-text-stroke: 8px var(--bar); }
+.lede .lede-cta { -webkit-text-stroke: 0; color: #173F2A; }
+.lede-text, .cta .fine { font-weight: 600; }
